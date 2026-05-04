@@ -4,10 +4,14 @@
 main:
   sitemap: "https://www.cpcc.edu/sitemap.xml"
   exclude_patterns:
+    # /media/image/N entries are 65% of the cpcc.edu sitemap and contain
+    # no useful text — they're image-asset records, not content pages.
+    - "/media/"
     - "/news/"
     - "/events/"
     - "/calendar/"
     - "/sites/.*\\.pdf$"
+    - "/node/\\d+$"  # raw Drupal node URLs are usually duplicates of canonical paths
   max_pages: 2000
 
 catalog:
