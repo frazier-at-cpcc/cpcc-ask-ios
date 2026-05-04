@@ -70,8 +70,17 @@ final class ChatViewModel {
 
             if let idx = turns.firstIndex(where: { $0.id == assistantId }) {
                 turns[idx].isStreaming = false
-                turns[idx].sources = result.chunks.map(\.sourceURL)
+                var seen = Set<URL>()
+                turns[idx].sources = result.chunks.map(\.sourceURL).filter { seen.insert($0).inserted }
                 turns[idx].scheduleHits = result.sections
+            }
+            switch result.scheduleStatus {
+            case .error(let detail):
+                lastError = "Live schedule unreachable: \(detail)"
+            case .noResults(let q):
+                lastError = "Live schedule returned no sections for \"\(q)\"."
+            case .ok, .skipped:
+                break
             }
         } catch let err {
             if let idx = turns.firstIndex(where: { $0.id == assistantId }) {

@@ -1,6 +1,8 @@
 """Sliding-window text chunker."""
 from __future__ import annotations
 
+import re
+
 
 def chunk_text(text: str, max_chars: int = 600, overlap: int = 100,
                min_chunk_chars: int = 200) -> list[str]:
@@ -43,4 +45,46 @@ def chunk_text(text: str, max_chars: int = 600, overlap: int = 100,
         if end == len(text):
             break
         start = max(end - overlap, start + 1)
+    return chunks
+
+
+# Splits at the start of any line beginning with #, ##, or ### (ATX headings).
+_HEADING_SPLIT = re.compile(r"(?m)^(?=#{1,3}\s)")
+
+
+def chunk_markdown(markdown: str, max_chars: int = 600, overlap: int = 100,
+                   min_chunk_chars: int = 200) -> list[str]:
+    """Markdown-aware chunker.
+
+    Splits on heading boundaries (#, ##, ###) into sections, then runs each
+    section through chunk_text. Short adjacent sections are merged together
+    rather than emitted as microchunks.
+    """
+    markdown = markdown.strip()
+    if not markdown:
+        return []
+
+    sections = [s.strip() for s in _HEADING_SPLIT.split(markdown) if s.strip()]
+    if not sections:
+        return chunk_text(markdown, max_chars=max_chars, overlap=overlap,
+                          min_chunk_chars=min_chunk_chars)
+
+    chunks: list[str] = []
+    buffer = ""
+    for section in sections:
+        if len(buffer) + len(section) + 2 <= max_chars:
+            buffer = (buffer + "\n\n" + section).strip()
+            continue
+        if buffer:
+            chunks.extend(chunk_text(buffer, max_chars=max_chars, overlap=overlap,
+                                     min_chunk_chars=min_chunk_chars))
+            buffer = ""
+        if len(section) <= max_chars:
+            buffer = section
+        else:
+            chunks.extend(chunk_text(section, max_chars=max_chars, overlap=overlap,
+                                     min_chunk_chars=min_chunk_chars))
+    if buffer:
+        chunks.extend(chunk_text(buffer, max_chars=max_chars, overlap=overlap,
+                                 min_chunk_chars=min_chunk_chars))
     return chunks

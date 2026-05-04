@@ -1,8 +1,16 @@
 import Foundation
 
+enum ScheduleStatus {
+    case skipped
+    case ok([Section])
+    case noResults(query: String)
+    case error(String)
+}
+
 struct QueryResult {
     let chunks: [Chunk]
     let sections: [Section]
+    let scheduleStatus: ScheduleStatus
     let stream: AsyncThrowingStream<String, Error>
 }
 
@@ -32,23 +40,29 @@ actor QueryOrchestrator {
         let intent = IntentClassifier.classify(question)
         let chunks = await rag.search(question, k: 6)
 
-        var sections: [Section] = []
+        var status: ScheduleStatus = .skipped
         if allowSchedule, case let .needsSchedule(code, subject) = intent {
+            let label = code ?? subject ?? question
             do {
-                sections = try await schedule.searchSections(
+                let found = try await schedule.searchSections(
                     courseCode: code, subject: subject)
+                status = found.isEmpty ? .noResults(query: label) : .ok(found)
             } catch {
-                sections = []
+                status = .error(String(describing: error))
             }
         }
+
+        let sections: [Section]
+        if case let .ok(s) = status { sections = s } else { sections = [] }
 
         let today = dateFormatter.string(from: Date())
         let messages = PromptBuilder.build(question: question,
                                            chunks: chunks,
-                                           sections: sections,
+                                           scheduleStatus: status,
                                            history: history,
                                            today: today)
         let stream = await llm.stream(messages: messages, modelId: modelId, apiKey: apiKey)
-        return QueryResult(chunks: chunks, sections: sections, stream: stream)
+        return QueryResult(chunks: chunks, sections: sections,
+                           scheduleStatus: status, stream: stream)
     }
 }

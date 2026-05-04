@@ -39,7 +39,7 @@ struct SettingsView: View {
                         Text("Status")
                         Spacer()
                         Text(corpusStatus.state.displayName)
-                            .foregroundStyle(corpusStatus.state.isReady ? .secondary : .red)
+                            .foregroundStyle(corpusStatus.state.isReady ? Color.secondary : Color.red)
                             .font(.footnote)
                             .multilineTextAlignment(.trailing)
                     }

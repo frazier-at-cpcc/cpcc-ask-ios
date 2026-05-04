@@ -9,18 +9,26 @@ cd pipeline
 python -m venv .venv
 source .venv/bin/activate
 pip install -e .[dev]
+python -m playwright install chromium   # one-time; or run: crawl4ai-setup
 
-python -m pipeline.build_corpus --out out --version $(date +%Y-%m-%d)
-python -m pipeline.upload_release --out out --version $(date +%Y-%m-%d) --repo-root ..
+cd ..
+python -m pipeline.build_corpus \
+    --sources pipeline/sources.yaml \
+    --raw pipeline/raw \
+    --out pipeline/out \
+    --version $(date +%Y-%m-%d)
+python -m pipeline.scripts.verify_corpus --out pipeline/out
+python -m pipeline.upload_release --out pipeline/out --version $(date +%Y-%m-%d) --repo-root .
 ```
 
 ## Stages
 
-1. **Crawl** — `cpcc_main.py`, `cpcc_catalog.py`, `cpcc_pdfs.py` produce JSONL records.
-2. **Chunk** — `chunker.py` slides 600-char windows with 100-char overlap, paragraph-aware.
-3. **Embed** — `embedder.py` runs BAAI/bge-small-en-v1.5 (384-dim, L2-normalized).
-4. **Write** — `writer.py` produces `corpus.sqlite` (chunks + FTS5) and `embeddings.bin`.
-5. **Upload** — `upload_release.py` zips, publishes via `gh release create`, updates `latest.json`.
+1. **Discover** — `crawlers/sitemap.py` reads `sources.yaml`, fetches `sitemap.xml` for each site, and returns a filtered URL list.
+2. **Crawl** — `crawlers/html_crawler.py` renders each page with crawl4ai (Playwright) and extracts clean markdown JSONL. `crawlers/pdf_fetcher.py` downloads allowlisted PDFs via httpx and converts them to markdown JSONL with pdfplumber.
+3. **Chunk** — `chunker.py` splits markdown into heading-aware chunks and deduplicates across all sources.
+4. **Embed** — `embedder.py` runs `sentence-transformers/all-MiniLM-L6-v2` (384-dim, L2-normalized).
+5. **Write** — `writer.py` produces `corpus.sqlite` (chunks + FTS5) and `embeddings.bin`.
+6. **Upload** — `upload_release.py` zips, publishes via `gh release create`, updates `latest.json`.
 
 ## CoreML conversion (one-time)
 
