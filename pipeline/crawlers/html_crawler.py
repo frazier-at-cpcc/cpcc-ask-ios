@@ -9,11 +9,21 @@ from __future__ import annotations
 
 import asyncio
 import hashlib
+import sys
 from dataclasses import dataclass
 
-from crawl4ai import AsyncWebCrawler, CrawlerRunConfig
+from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig
 from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
 from crawl4ai.content_filter_strategy import PruningContentFilter
+
+# Pin browser settings explicitly so corpus builds are reproducible across
+# crawl4ai version upgrades (defaults can shift between releases).
+_BROWSER_CONFIG = BrowserConfig(
+    headless=True,
+    user_agent="AskCPCC-Pipeline/0.2 (+https://github.com/Frazier-at-CPCC/cpcc-ask-ios)",
+    viewport_width=1280,
+    viewport_height=800,
+)
 
 
 @dataclass
@@ -53,12 +63,14 @@ def html_to_markdown(html: str, base_url: str) -> str:
 async def _crawl_async(urls: list[str]) -> list[Record]:
     config = CrawlerRunConfig(markdown_generator=_markdown_generator())
     records: list[Record] = []
-    async with AsyncWebCrawler() as crawler:
+    async with AsyncWebCrawler(config=_BROWSER_CONFIG) as crawler:
         for url in urls:
             try:
                 result = await crawler.arun(url=url, config=config)
-            except Exception as exc:
-                print(f"  skip {url}: {exc}")
+            except (asyncio.TimeoutError, ConnectionError, OSError) as exc:
+                # Only swallow expected network-layer failures; anything else
+                # (programming errors, KeyboardInterrupt, etc.) should propagate.
+                print(f"html_crawler.crawl: skip {url}: {exc}", file=sys.stderr)
                 continue
             if not getattr(result, "success", False):
                 continue
