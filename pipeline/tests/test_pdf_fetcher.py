@@ -54,3 +54,14 @@ def test_fetch_all_skips_failed_fetches():
         fetcher=fail_fetch,
     )
     assert records == []
+
+
+def test_fetch_all_skips_pdfs_with_no_extractable_text():
+    """Image-only or otherwise text-less PDFs should be skipped, not added
+    as empty Records to the corpus."""
+    def fake_fetch(url): return b"not a pdf"
+    records = fetch_all(
+        allowlist=[{"url": "https://example.test/blank.pdf", "title": "Blank"}],
+        fetcher=fake_fetch,
+    )
+    assert records == []

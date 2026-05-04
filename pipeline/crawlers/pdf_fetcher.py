@@ -15,6 +15,8 @@ import httpx
 import pdfplumber
 
 
+# Same shape as html_crawler.Record — kept separate intentionally to decouple
+# the two crawlers. Downstream code accepts either via duck typing.
 @dataclass
 class Record:
     url: str

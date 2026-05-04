@@ -26,6 +26,8 @@ _BROWSER_CONFIG = BrowserConfig(
 )
 
 
+# Same shape as pdf_fetcher.Record — kept separate intentionally to decouple
+# the two crawlers. Downstream code accepts either via duck typing.
 @dataclass
 class Record:
     url: str
