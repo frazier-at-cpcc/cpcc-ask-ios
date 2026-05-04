@@ -28,6 +28,7 @@
 		C4B9838CB900BFEEE62A1107 /* AskCPCCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6737FB10FA516CF98C23948 /* AskCPCCApp.swift */; };
 		C98F4A476A9935A63C821A52 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3DE5C41C131D3B3F2D1840 /* ChatMessage.swift */; };
 		D1CA402FE1C92140C2EFD2D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 012093CBF0DFB94F1B7C5095 /* Assets.xcassets */; };
+		DE23B1AA7568757EEBB03C0A /* RAGIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B021D2D7ECDA1B2C1452909 /* RAGIndex.swift */; };
 		E0698A17E64669A1583E0A73 /* AskCPCCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E2BBB711773978C206914 /* AskCPCCTests.swift */; };
 		FA73CF8645EB1DFACF05655D /* CPCCColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284302164C18304341597AA /* CPCCColors.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 		3A99C1568A1BEF535D0F7C04 /* BGEEmbedder.mlpackage */ = {isa = PBXFileReference; path = BGEEmbedder.mlpackage; sourceTree = "<group>"; };
 		42CA0D9605D75F65ED62E307 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		45EB1AA60591631DA2D516A1 /* AskCPCC.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = AskCPCC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B021D2D7ECDA1B2C1452909 /* RAGIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAGIndex.swift; sourceTree = "<group>"; };
 		4FEBB7F93BE4A9067197451D /* tokenizer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenizer.json; sourceTree = "<group>"; };
 		66B989C6DB7B321D955026BE /* SectionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionResult.swift; sourceTree = "<group>"; };
 		9A4E2BBB711773978C206914 /* AskCPCCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskCPCCTests.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				085F92A38CF8192BF49157CC /* Chunk.swift */,
 				B557FA366D8AD2B089AC7C61 /* CorpusStore.swift */,
 				E2BC5016AB7B4C2198DF1370 /* EmbeddingModel.swift */,
+				4B021D2D7ECDA1B2C1452909 /* RAGIndex.swift */,
 				2F28B9016F06E3446A284741 /* Tokenizer.swift */,
 				9E6E5BE07372720653DA9E9B /* VectorStore.swift */,
 			);
@@ -373,6 +376,7 @@
 				8EA2A06160DB4268579A9FD3 /* CorpusStore.swift in Sources */,
 				98D03AA2CB9AB4AA64DA7083 /* EmbeddingModel.swift in Sources */,
 				4965F353236AA17A258D9277 /* KeychainStore.swift in Sources */,
+				DE23B1AA7568757EEBB03C0A /* RAGIndex.swift in Sources */,
 				A9F84898C112CB19E5D6BBB9 /* Section.swift in Sources */,
 				0D97B1C28454639697827142 /* SectionResult.swift in Sources */,
 				6603F6B43E7DB3534032143D /* Settings.swift in Sources */,
