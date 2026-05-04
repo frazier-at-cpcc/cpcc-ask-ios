@@ -63,7 +63,22 @@ def html_to_markdown(html: str, base_url: str) -> str:
 
 
 async def _crawl_async(urls: list[str]) -> list[Record]:
-    config = CrawlerRunConfig(markdown_generator=_markdown_generator())
+    # Skip image / media / script processing — we only need text for RAG
+    # retrieval, and image-link enumeration was the slowest step on cpcc.edu
+    # during the 2026-05-04 local build.
+    config = CrawlerRunConfig(
+        markdown_generator=_markdown_generator(),
+        excluded_tags=["img", "picture", "svg", "video", "audio", "iframe", "script", "style", "noscript"],
+        exclude_external_images=True,
+        exclude_all_images=True,
+        exclude_external_links=True,
+        exclude_social_media_links=True,
+        process_iframes=False,
+        screenshot=False,
+        pdf=False,
+        wait_for_images=False,
+        word_count_threshold=10,
+    )
     records: list[Record] = []
     async with AsyncWebCrawler(config=_BROWSER_CONFIG) as crawler:
         for url in urls:
