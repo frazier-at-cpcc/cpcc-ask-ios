@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A7C7FD88DC2CEBF40CA8B42 /* CPCCFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5323C955CEE05965168B7D5 /* CPCCFonts.swift */; };
 		C4B9838CB900BFEEE62A1107 /* AskCPCCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6737FB10FA516CF98C23948 /* AskCPCCApp.swift */; };
 		D1CA402FE1C92140C2EFD2D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 012093CBF0DFB94F1B7C5095 /* Assets.xcassets */; };
 		E0698A17E64669A1583E0A73 /* AskCPCCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E2BBB711773978C206914 /* AskCPCCTests.swift */; };
+		FA73CF8645EB1DFACF05655D /* CPCCColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284302164C18304341597AA /* CPCCColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,10 +34,12 @@
 		45EB1AA60591631DA2D516A1 /* AskCPCC.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = AskCPCC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A4E2BBB711773978C206914 /* AskCPCCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskCPCCTests.swift; sourceTree = "<group>"; };
 		B33EA8146A0FD837195207BA /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		B5323C955CEE05965168B7D5 /* CPCCFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPCCFonts.swift; sourceTree = "<group>"; };
 		B64658A5227EC44C790CC7C4 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		BC83F4E7971E3BC043194447 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		C3F44FBFC91EA961A44B7801 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		C8A2CAEF6255EB3A9E91CC44 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		D284302164C18304341597AA /* CPCCColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPCCColors.swift; sourceTree = "<group>"; };
 		DD67403FCA1BDD7628F67868 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		E893EC50A45FA660A5F0D031 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		F6737FB10FA516CF98C23948 /* AskCPCCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskCPCCApp.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				E893EC50A45FA660A5F0D031 /* .gitkeep */,
+				D284302164C18304341597AA /* CPCCColors.swift */,
+				B5323C955CEE05965168B7D5 /* CPCCFonts.swift */,
 			);
 			path = Branding;
 			sourceTree = "<group>";
@@ -292,6 +298,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4B9838CB900BFEEE62A1107 /* AskCPCCApp.swift in Sources */,
+				FA73CF8645EB1DFACF05655D /* CPCCColors.swift in Sources */,
+				0A7C7FD88DC2CEBF40CA8B42 /* CPCCFonts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
