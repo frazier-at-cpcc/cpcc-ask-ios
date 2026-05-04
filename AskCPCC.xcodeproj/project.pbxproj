@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		0A7C7FD88DC2CEBF40CA8B42 /* CPCCFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5323C955CEE05965168B7D5 /* CPCCFonts.swift */; };
+		0AB9428CDEEBE9BD4BDC9CF0 /* tokenizer.json in Resources */ = {isa = PBXBuildFile; fileRef = 4FEBB7F93BE4A9067197451D /* tokenizer.json */; };
 		0D97B1C28454639697827142 /* SectionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B989C6DB7B321D955026BE /* SectionResult.swift */; };
+		26BE0A8B144F0D54CDF6AED8 /* tokenizer_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C04A157BBDF1107B9628BE7 /* tokenizer_config.json */; };
+		489ABF2542D1F977BEBBF229 /* BGEEmbedder.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 3A99C1568A1BEF535D0F7C04 /* BGEEmbedder.mlpackage */; };
 		4965F353236AA17A258D9277 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDA564395E8C5B5E4FCFFF6 /* KeychainStore.swift */; };
 		6603F6B43E7DB3534032143D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA0D9605D75F65ED62E307 /* Settings.swift */; };
+		848EBF513B88DBEF0AFB2276 /* special_tokens_map.json in Resources */ = {isa = PBXBuildFile; fileRef = FE73153417307A0AA7D90F5C /* special_tokens_map.json */; };
 		A9F84898C112CB19E5D6BBB9 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1987AFF4157A420C4DFFE87 /* Section.swift */; };
 		B6374699DBF7B9536B4AF98E /* ChatTurn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013603EB31BFB789EB030B77 /* ChatTurn.swift */; };
 		BE9C78D653C4F9A4371F3164 /* KeychainStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17137D8430B13FB2CFAABF8D /* KeychainStoreTests.swift */; };
+		C4921C8A33CD725D49048FB9 /* vocab.txt in Resources */ = {isa = PBXBuildFile; fileRef = A0197C8E6AE96B0D697044D1 /* vocab.txt */; };
 		C4B9838CB900BFEEE62A1107 /* AskCPCCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6737FB10FA516CF98C23948 /* AskCPCCApp.swift */; };
 		C98F4A476A9935A63C821A52 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3DE5C41C131D3B3F2D1840 /* ChatMessage.swift */; };
 		D1CA402FE1C92140C2EFD2D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 012093CBF0DFB94F1B7C5095 /* Assets.xcassets */; };
@@ -39,12 +44,16 @@
 		166E23D943FF01400DB371AE /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		17137D8430B13FB2CFAABF8D /* KeychainStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStoreTests.swift; sourceTree = "<group>"; };
 		1ADAED6CB70D96BDB0909CE0 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		1C04A157BBDF1107B9628BE7 /* tokenizer_config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenizer_config.json; sourceTree = "<group>"; };
 		260BC3E057AB0C9F5CF8BA8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3A99C1568A1BEF535D0F7C04 /* BGEEmbedder.mlpackage */ = {isa = PBXFileReference; path = BGEEmbedder.mlpackage; sourceTree = "<group>"; };
 		42CA0D9605D75F65ED62E307 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		45EB1AA60591631DA2D516A1 /* AskCPCC.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = AskCPCC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FEBB7F93BE4A9067197451D /* tokenizer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenizer.json; sourceTree = "<group>"; };
 		66B989C6DB7B321D955026BE /* SectionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionResult.swift; sourceTree = "<group>"; };
 		9A4E2BBB711773978C206914 /* AskCPCCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskCPCCTests.swift; sourceTree = "<group>"; };
 		9FDA564395E8C5B5E4FCFFF6 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		A0197C8E6AE96B0D697044D1 /* vocab.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = vocab.txt; sourceTree = "<group>"; };
 		B33EA8146A0FD837195207BA /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		B5323C955CEE05965168B7D5 /* CPCCFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPCCFonts.swift; sourceTree = "<group>"; };
 		B64658A5227EC44C790CC7C4 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
@@ -57,6 +66,7 @@
 		DD67403FCA1BDD7628F67868 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		E893EC50A45FA660A5F0D031 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		F6737FB10FA516CF98C23948 /* AskCPCCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskCPCCApp.swift; sourceTree = "<group>"; };
+		FE73153417307A0AA7D90F5C /* special_tokens_map.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = special_tokens_map.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -66,6 +76,17 @@
 				BC83F4E7971E3BC043194447 /* .gitkeep */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		1950FF6F085D76096818458F /* BGETokenizer */ = {
+			isa = PBXGroup;
+			children = (
+				FE73153417307A0AA7D90F5C /* special_tokens_map.json */,
+				1C04A157BBDF1107B9628BE7 /* tokenizer_config.json */,
+				4FEBB7F93BE4A9067197451D /* tokenizer.json */,
+				A0197C8E6AE96B0D697044D1 /* vocab.txt */,
+			);
+			path = BGETokenizer;
 			sourceTree = "<group>";
 		};
 		20391C834252DB6D47D74344 /* AskCPCC */ = {
@@ -172,6 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				DD67403FCA1BDD7628F67868 /* .gitkeep */,
+				3A99C1568A1BEF535D0F7C04 /* BGEEmbedder.mlpackage */,
+				1950FF6F085D76096818458F /* BGETokenizer */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -286,6 +309,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1CA402FE1C92140C2EFD2D5 /* Assets.xcassets in Resources */,
+				848EBF513B88DBEF0AFB2276 /* special_tokens_map.json in Resources */,
+				0AB9428CDEEBE9BD4BDC9CF0 /* tokenizer.json in Resources */,
+				26BE0A8B144F0D54CDF6AED8 /* tokenizer_config.json in Resources */,
+				C4921C8A33CD725D49048FB9 /* vocab.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4B9838CB900BFEEE62A1107 /* AskCPCCApp.swift in Sources */,
+				489ABF2542D1F977BEBBF229 /* BGEEmbedder.mlpackage in Sources */,
 				FA73CF8645EB1DFACF05655D /* CPCCColors.swift in Sources */,
 				0A7C7FD88DC2CEBF40CA8B42 /* CPCCFonts.swift in Sources */,
 				C98F4A476A9935A63C821A52 /* ChatMessage.swift in Sources */,
