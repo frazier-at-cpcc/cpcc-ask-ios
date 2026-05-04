@@ -20,7 +20,9 @@
 		837510ACEA26A5E7F2900C6C /* OpenRouterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FB54A6DBCA5E0ED4B4F277 /* OpenRouterModel.swift */; };
 		848EBF513B88DBEF0AFB2276 /* special_tokens_map.json in Resources */ = {isa = PBXBuildFile; fileRef = FE73153417307A0AA7D90F5C /* special_tokens_map.json */; };
 		8EA2A06160DB4268579A9FD3 /* CorpusStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557FA366D8AD2B089AC7C61 /* CorpusStore.swift */; };
+		9574A2925F707E1FA923E31D /* CourseScheduleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D022C59FAB5985378C8FA21 /* CourseScheduleAuth.swift */; };
 		97560B0267FE7320015F10B2 /* VectorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6E5BE07372720653DA9E9B /* VectorStore.swift */; };
+		98C1BDD5EBA80CFD85D1E713 /* CourseScheduleClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDA2DD272C660F0A40154F /* CourseScheduleClient.swift */; };
 		98D03AA2CB9AB4AA64DA7083 /* EmbeddingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BC5016AB7B4C2198DF1370 /* EmbeddingModel.swift */; };
 		A20A30AC3D655EBAFFA4F2F5 /* OpenRouterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482C48CEF21D253BDDE214AF /* OpenRouterClient.swift */; };
 		A9F84898C112CB19E5D6BBB9 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1987AFF4157A420C4DFFE87 /* Section.swift */; };
@@ -55,6 +57,7 @@
 		058B4D0BBAFCE7D88C7FDE24 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		085F92A38CF8192BF49157CC /* Chunk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chunk.swift; sourceTree = "<group>"; };
 		108E606FACEDB0F45222AE59 /* AskCPCCTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AskCPCCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		15DDA2DD272C660F0A40154F /* CourseScheduleClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseScheduleClient.swift; sourceTree = "<group>"; };
 		166E23D943FF01400DB371AE /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		17137D8430B13FB2CFAABF8D /* KeychainStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStoreTests.swift; sourceTree = "<group>"; };
 		1ADAED6CB70D96BDB0909CE0 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
@@ -69,6 +72,7 @@
 		4B021D2D7ECDA1B2C1452909 /* RAGIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAGIndex.swift; sourceTree = "<group>"; };
 		4FEBB7F93BE4A9067197451D /* tokenizer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenizer.json; sourceTree = "<group>"; };
 		66B989C6DB7B321D955026BE /* SectionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionResult.swift; sourceTree = "<group>"; };
+		8D022C59FAB5985378C8FA21 /* CourseScheduleAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseScheduleAuth.swift; sourceTree = "<group>"; };
 		9754C2AB371A72C70ED649CF /* PromptBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptBuilderTests.swift; sourceTree = "<group>"; };
 		97F3902D584C1AF169E2689A /* CorpusUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorpusUpdater.swift; sourceTree = "<group>"; };
 		9A4E2BBB711773978C206914 /* AskCPCCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskCPCCTests.swift; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				B33EA8146A0FD837195207BA /* .gitkeep */,
+				8D022C59FAB5985378C8FA21 /* CourseScheduleAuth.swift */,
+				15DDA2DD272C660F0A40154F /* CourseScheduleClient.swift */,
 				C1987AFF4157A420C4DFFE87 /* Section.swift */,
 				66B989C6DB7B321D955026BE /* SectionResult.swift */,
 			);
@@ -407,6 +413,8 @@
 				BC99D038F3FC8EE423B2FA77 /* Chunk.swift in Sources */,
 				8EA2A06160DB4268579A9FD3 /* CorpusStore.swift in Sources */,
 				EDF224C232A91B8C95002B67 /* CorpusUpdater.swift in Sources */,
+				9574A2925F707E1FA923E31D /* CourseScheduleAuth.swift in Sources */,
+				98C1BDD5EBA80CFD85D1E713 /* CourseScheduleClient.swift in Sources */,
 				98D03AA2CB9AB4AA64DA7083 /* EmbeddingModel.swift in Sources */,
 				4965F353236AA17A258D9277 /* KeychainStore.swift in Sources */,
 				A20A30AC3D655EBAFFA4F2F5 /* OpenRouterClient.swift in Sources */,
