@@ -1,0 +1,22 @@
+# Declarative source configuration for the corpus pipeline.
+# See docs/superpowers/specs/2026-05-04-corpus-pipeline-v2-design.md.
+
+main:
+  sitemap: "https://www.cpcc.edu/sitemap.xml"
+  exclude_patterns:
+    - "/news/"
+    - "/events/"
+    - "/calendar/"
+    - "/sites/.*\\.pdf$"
+  max_pages: 2000
+
+catalog:
+  sitemap: "https://catalog.cpcc.edu/sitemap.xml"
+  exclude_patterns:
+    - "/archives?/"
+    - "(19|20)\\d{2}([-_]\\d{2,4})?\\.pdf$"
+  max_pages: 1500
+
+pdfs:
+  # Populated in Task 2 after manual research.
+  allowlist: []
