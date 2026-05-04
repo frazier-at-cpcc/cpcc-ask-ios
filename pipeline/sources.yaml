@@ -18,5 +18,30 @@ catalog:
   max_pages: 1500
 
 pdfs:
-  # Populated in Task 2 after manual research.
-  allowlist: []
+  # Explicit allowlist of currently-published CPCC PDFs.
+  # Refresh annually (handbook, calendars) or when CPCC publishes new versions.
+  # Each entry must have url + title. Title is hand-written (not derived from
+  # PDF metadata, which is often garbage like "Microsoft Word - draft v3.docx").
+  allowlist:
+    - url: "https://catalog.cpcc.edu/student-handbook/student-handbook.pdf"
+      title: "Student Handbook 2025-2026"
+    - url: "https://catalog.cpcc.edu/student-handbook/rights-responsibilities-safety/rights-responsibilities-safety.pdf"
+      title: "Rights, Responsibilities and Safety (Student Handbook)"
+    - url: "https://catalog.cpcc.edu/about-central-piedmont/academic-calendar/academic-calendar.pdf"
+      title: "Academic Calendar 2025-2026"
+    - url: "https://www.cpcc.edu/sites/default/files/2025-06/24804-spring-2026-academic-calendar.pdf"
+      title: "Academic Calendar - Spring 2026"
+    - url: "https://www.cpcc.edu/sites/default/files/2024-10/24804-summer-2026-academic-calendar.pdf"
+      title: "Academic Calendar - Summer 2026"
+    # Note: the CPCC URL spells the slug "contuct" (a real typo on their side).
+    # Do NOT correct it — the corrected spelling 404s.
+    - url: "https://catalog.cpcc.edu/student-engagement/student-contuct/student-contuct.pdf"
+      title: "Student Code of Conduct"
+    - url: "https://catalog.cpcc.edu/enrollment/tuition-and-fees/tuition-and-fees.pdf"
+      title: "Tuition and Fees Schedule"
+    - url: "https://www.cpcc.edu/sites/default/files/2025-07/2025-cost-of-attendance_0.pdf"
+      title: "Estimated Cost of Attendance 2025-2026"
+    - url: "https://www.cpcc.edu/sites/default/files/2026-02/25628-annual-security-report-2024.pdf"
+      title: "Annual Security Report 2024 (Clery Act)"
+    - url: "https://catalog.cpcc.edu/learning-resources/academic-regulations/academic-regulations.pdf"
+      title: "Academic Regulations"
