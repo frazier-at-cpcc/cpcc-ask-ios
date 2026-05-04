@@ -12,6 +12,7 @@
 		0D97B1C28454639697827142 /* SectionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B989C6DB7B321D955026BE /* SectionResult.swift */; };
 		128C10A73C0251610328F916 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC46C8E6B51CB40ECD9A6A0E /* OnboardingView.swift */; };
 		26BE0A8B144F0D54CDF6AED8 /* tokenizer_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C04A157BBDF1107B9628BE7 /* tokenizer_config.json */; };
+		2EEC5A6BA89E7D56D1C8C08E /* ApiKeyPasteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D22212D0A2C656EB42B26A /* ApiKeyPasteView.swift */; };
 		43FC089CEAB90AE5E90230C0 /* ScheduleBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCCE9F0871B2A8B2E4F465F /* ScheduleBadge.swift */; };
 		45F87F61B8A7B152FC9D32D9 /* PromptBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754C2AB371A72C70ED649CF /* PromptBuilderTests.swift */; };
 		47A3DA67C28CEE93EF1B6035 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB508855059E8741A4A1A6AB /* SettingsView.swift */; };
@@ -95,6 +96,7 @@
 		6460FA50C1755159E880DFC5 /* QueryOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOrchestrator.swift; sourceTree = "<group>"; };
 		66B989C6DB7B321D955026BE /* SectionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionResult.swift; sourceTree = "<group>"; };
 		678601E9A9EF9030389DA922 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		71D22212D0A2C656EB42B26A /* ApiKeyPasteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyPasteView.swift; sourceTree = "<group>"; };
 		767CC52013F9D7DF8C8D1C32 /* InputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBar.swift; sourceTree = "<group>"; };
 		7836E2CC341C134AD9C04606 /* ErrorBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBanner.swift; sourceTree = "<group>"; };
 		83B73F80C93C1A17F5ED5A4C /* IntentClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentClassifier.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				166E23D943FF01400DB371AE /* .gitkeep */,
+				71D22212D0A2C656EB42B26A /* ApiKeyPasteView.swift */,
 				AC46C8E6B51CB40ECD9A6A0E /* OnboardingView.swift */,
 			);
 			path = Onboarding;
@@ -452,6 +455,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EEC5A6BA89E7D56D1C8C08E /* ApiKeyPasteView.swift in Sources */,
 				C4B9838CB900BFEEE62A1107 /* AskCPCCApp.swift in Sources */,
 				489ABF2542D1F977BEBBF229 /* BGEEmbedder.mlpackage in Sources */,
 				FA73CF8645EB1DFACF05655D /* CPCCColors.swift in Sources */,
