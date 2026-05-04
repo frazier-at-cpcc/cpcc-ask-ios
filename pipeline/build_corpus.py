@@ -1,76 +1,96 @@
-"""End-to-end: crawl → extract → chunk → embed → write."""
+"""End-to-end v2: sources.yaml → sitemap+crawl → PDFs → markdown JSONL → chunk → embed → write."""
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from datetime import date
 from pathlib import Path
 
-from bs4 import BeautifulSoup
+import yaml
 
-from pipeline.chunker import chunk_text
-from pipeline.crawlers import cpcc_main, cpcc_catalog, cpcc_pdfs
+from pipeline.chunker import chunk_markdown
+from pipeline.crawlers import sitemap, html_crawler, pdf_fetcher
 from pipeline.embedder import load_model, embed
 from pipeline.writer import write_corpus
 
 
-def extract_text_from_html(html: str) -> str:
-    soup = BeautifulSoup(html, "html.parser")
-    for tag in soup(["script", "style", "nav", "footer", "header", "aside"]):
-        tag.decompose()
-    return soup.get_text(separator="\n", strip=True)
+def load_sources(path: Path) -> dict:
+    return yaml.safe_load(path.read_text(encoding="utf-8"))
 
 
-def load_jsonl(path: Path):
-    if not path.exists():
-        return
-    with path.open(encoding="utf-8") as fp:
-        for line in fp:
-            yield json.loads(line)
+def write_jsonl(path: Path, records) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as fp:
+        for r in records:
+            fp.write(json.dumps({
+                "url": r.url,
+                "title": r.title,
+                "markdown": r.markdown,
+                "sha256": r.sha256,
+            }) + "\n")
 
 
-def build(raw_dir: Path, out_dir: Path, version: str | None = None) -> None:
-    print("Stage 1: crawl")
-    cpcc_main.crawl(raw_dir)
-    cpcc_catalog.crawl(raw_dir)
-    cpcc_pdfs.crawl(raw_dir)
+def build(sources_path: Path, raw_dir: Path, out_dir: Path,
+          version: str | None = None) -> None:
+    sources = load_sources(sources_path)
 
-    print("Stage 2 + 3: extract + chunk + dedup")
+    print("Stage 1: discover URLs from sitemaps")
+    main_cfg = sources["main"]
+    main_urls = sitemap.load_urls(
+        main_cfg["sitemap"], main_cfg.get("exclude_patterns", []),
+        max_pages=main_cfg.get("max_pages", 2000),
+    )
+    print(f"  www.cpcc.edu: {len(main_urls)} URLs")
+
+    catalog_cfg = sources["catalog"]
+    catalog_urls = sitemap.load_urls(
+        catalog_cfg["sitemap"], catalog_cfg.get("exclude_patterns", []),
+        max_pages=catalog_cfg.get("max_pages", 1500),
+    )
+    print(f"  catalog.cpcc.edu: {len(catalog_urls)} URLs")
+
+    print("Stage 2: crawl HTML pages")
+    main_records = html_crawler.crawl(main_urls)
+    catalog_records = html_crawler.crawl(catalog_urls)
+
+    print("Stage 3: fetch allowlisted PDFs")
+    pdf_records = pdf_fetcher.fetch_all(sources.get("pdfs", {}).get("allowlist", []))
+    print(f"  pdfs: {len(pdf_records)}")
+
+    raw_dir.mkdir(parents=True, exist_ok=True)
+    write_jsonl(raw_dir / "main.jsonl", main_records)
+    write_jsonl(raw_dir / "catalog.jsonl", catalog_records)
+    write_jsonl(raw_dir / "pdfs.jsonl", pdf_records)
+
+    print("Stage 4: chunk + dedup")
     chunks: list[dict] = []
     seen_texts: set[str] = set()
-    counts = {"cpcc.edu": 0, "catalog.cpcc.edu": 0, "pdfs": 0}
+    counts = {"www.cpcc.edu": 0, "catalog.cpcc.edu": 0, "pdfs": 0}
 
-    def add_chunk(piece: str, url: str, title: str) -> None:
-        if piece in seen_texts:
-            return
-        seen_texts.add(piece)
-        chunks.append({"source_url": url, "title": title, "text": piece,
-                       "char_offset": 0, "page_section": ""})
+    def add_chunks(records, label: str) -> None:
+        for r in records:
+            for piece in chunk_markdown(r.markdown):
+                if piece in seen_texts:
+                    continue
+                seen_texts.add(piece)
+                chunks.append({
+                    "source_url": r.url, "title": r.title, "text": piece,
+                    "char_offset": 0, "page_section": "",
+                })
+            counts[label] += 1
 
-    for rec in load_jsonl(raw_dir / "cpcc_main.jsonl"):
-        text = extract_text_from_html(rec["html"])
-        for piece in chunk_text(text):
-            add_chunk(piece, rec["url"], rec.get("title", ""))
-        counts["cpcc.edu"] += 1
-
-    for rec in load_jsonl(raw_dir / "cpcc_catalog.jsonl"):
-        text = extract_text_from_html(rec["html"])
-        for piece in chunk_text(text):
-            add_chunk(piece, rec["url"], rec.get("title", ""))
-        counts["catalog.cpcc.edu"] += 1
-
-    for rec in load_jsonl(raw_dir / "cpcc_pdfs.jsonl"):
-        for piece in chunk_text(rec["text"]):
-            add_chunk(piece, rec["url"], rec.get("title", ""))
-        counts["pdfs"] += 1
+    add_chunks(main_records, "www.cpcc.edu")
+    add_chunks(catalog_records, "catalog.cpcc.edu")
+    add_chunks(pdf_records, "pdfs")
 
     print(f"  total chunks: {len(chunks)} (deduped)")
 
-    print("Stage 4: embed")
+    print("Stage 5: embed")
     model = load_model()
     vecs = embed(model, [c["text"] for c in chunks])
 
-    print("Stage 5: write")
+    print("Stage 6: write")
     v = version or date.today().isoformat()
     write_corpus(out_dir, chunks, vecs, counts, version=v)
     print(f"Wrote corpus version {v} to {out_dir}")
@@ -78,8 +98,9 @@ def build(raw_dir: Path, out_dir: Path, version: str | None = None) -> None:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument("--sources", type=Path, default=Path("pipeline/sources.yaml"))
     parser.add_argument("--raw", type=Path, default=Path("pipeline/raw"))
     parser.add_argument("--out", type=Path, default=Path("pipeline/out"))
     parser.add_argument("--version", type=str, default=None)
     args = parser.parse_args()
-    build(args.raw, args.out, args.version)
+    build(args.sources, args.raw, args.out, args.version)
