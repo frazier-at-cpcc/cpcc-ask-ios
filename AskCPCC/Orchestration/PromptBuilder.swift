@@ -8,7 +8,7 @@ enum PromptBuilder {
 
     static func build(question: String,
                       chunks: [Chunk],
-                      sections: [Section],
+                      scheduleStatus: ScheduleStatus,
                       history: [ChatMessage],
                       today: String) -> [ChatMessage] {
 
@@ -21,13 +21,20 @@ enum PromptBuilder {
             }
         }
 
-        if !sections.isEmpty {
+        switch scheduleStatus {
+        case .skipped:
+            break
+        case .ok(let sections):
             system += "\n\nLIVE COURSE SCHEDULE:\n"
             for (i, s) in sections.enumerated() {
                 let seats = s.seatsOpen >= 0 ? "\(s.seatsOpen) seats" : "FULL"
                 system += "[s\(i + 1)] \(s.courseCode) — \(s.title) (\(s.credits) credits)\n"
                 system += "    Section \(s.sectionNumber): \(s.days) \(s.time), \(s.location), \(s.instructor), \(seats)\n"
             }
+        case .noResults(let query):
+            system += "\n\nLIVE COURSE SCHEDULE: attempted lookup for \"\(query)\" but the live schedule returned no current sections. Tell the user the live schedule had no matching sections right now and suggest they check the official schedule directly. Do not fabricate sections, seats, or times."
+        case .error(let detail):
+            system += "\n\nLIVE COURSE SCHEDULE: live lookup failed (\(detail)). Tell the user the live schedule is temporarily unreachable and suggest they check the official schedule directly. Do not fabricate sections, seats, or times."
         }
 
         var msgs: [ChatMessage] = [ChatMessage(role: "system", content: system)]
