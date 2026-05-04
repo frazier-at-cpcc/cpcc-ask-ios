@@ -1,0 +1,46 @@
+name: Refresh corpus
+
+on:
+  schedule:
+    - cron: "0 10 * * 1"  # Mondays 10:00 UTC = 06:00 ET
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pipeline
+        working-directory: pipeline
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: Build corpus
+        run: |
+          python -m pipeline.build_corpus --raw pipeline/raw --out pipeline/out --version "$(date +%Y-%m-%d)"
+
+      - name: Publish release + update latest.json
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python -m pipeline.upload_release --out pipeline/out --version "$(date +%Y-%m-%d)" --repo-root .
+
+      - name: Open PR for latest.json
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BR="chore/refresh-corpus-$(date +%Y-%m-%d)"
+          git config user.name "askcpcc-bot"
+          git config user.email "askcpcc-bot@users.noreply.github.com"
+          git checkout -b "$BR"
+          git add latest.json
+          git commit -m "chore: refresh corpus $(date +%Y-%m-%d)"
+          git push -u origin "$BR"
+          gh pr create --title "chore: refresh corpus $(date +%Y-%m-%d)" \
+                       --body "Automated weekly corpus refresh." \
+                       --base main --head "$BR"
