@@ -58,3 +58,36 @@ def test_min_chunk_size_enforced():
     # Should not produce a tiny chunk just because \n\n appears at offset ~600
     for c in chunks:
         assert len(c) >= 100, f"too-small chunk: {len(c)} chars"
+
+
+from pipeline.chunker import chunk_markdown
+
+
+def test_chunk_markdown_splits_on_h2():
+    md = "# Title\n\nIntro paragraph.\n\n## Section A\n\n" + ("A. " * 200) + "\n\n## Section B\n\n" + ("B. " * 200)
+    chunks = chunk_markdown(md, max_chars=600, overlap=100)
+    # Section A and B should not be glued together
+    a_chunks = [c for c in chunks if "A. " in c and "B. " not in c]
+    b_chunks = [c for c in chunks if "B. " in c and "A. " not in c]
+    assert a_chunks, "expected section A chunks"
+    assert b_chunks, "expected section B chunks"
+
+
+def test_chunk_markdown_preserves_short_section_in_one_chunk():
+    md = "# Title\n\nShort.\n\n## Heading\n\nAnother short paragraph."
+    chunks = chunk_markdown(md, max_chars=600, overlap=100)
+    assert len(chunks) == 1
+    assert "Short." in chunks[0]
+    assert "Another short paragraph." in chunks[0]
+
+
+def test_chunk_markdown_falls_back_to_size_split_within_long_section():
+    """A single section longer than max_chars uses chunk_text size splits."""
+    long_section = "# Title\n\n" + ("Repeated. " * 200)
+    chunks = chunk_markdown(long_section, max_chars=600, overlap=100)
+    assert len(chunks) >= 2
+    assert all(len(c) <= 600 for c in chunks)
+
+
+def test_chunk_markdown_empty_input_returns_empty_list():
+    assert chunk_markdown("", max_chars=600, overlap=100) == []
