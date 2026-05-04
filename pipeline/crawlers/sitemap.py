@@ -4,18 +4,35 @@ from __future__ import annotations
 
 import gzip
 import re
+import sys
 from xml.etree import ElementTree as ET
 
 import httpx
 
 NS = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 
+# Gzip magic bytes
+_GZIP_MAGIC = b"\x1f\x8b"
+
 
 def _fetch_text(url: str) -> str:
-    """Fetch a sitemap. Handles .xml.gz transparently."""
+    """Fetch a sitemap. Handles .xml.gz transparently.
+
+    Gzip detection priority:
+    1. Magic bytes b"\\x1f\\x8b" at start of content (content-type-agnostic)
+    2. URL suffix .gz
+    3. Content-Type header (application/gzip or application/x-gzip)
+    """
     resp = httpx.get(url, timeout=30, follow_redirects=True)
     resp.raise_for_status()
-    if url.endswith(".gz") or resp.headers.get("Content-Type", "").startswith("application/gzip"):
+    content_type = resp.headers.get("Content-Type", "")
+    is_gzip = (
+        resp.content[:2] == _GZIP_MAGIC
+        or url.endswith(".gz")
+        or content_type.startswith("application/gzip")
+        or content_type.startswith("application/x-gzip")
+    )
+    if is_gzip:
         return gzip.decompress(resp.content).decode("utf-8")
     return resp.text
 
@@ -55,7 +72,8 @@ def load_urls(sitemap_url: str, exclude_patterns: list[str],
 
         try:
             xml = _fetch_text(current)
-        except Exception:
+        except (httpx.HTTPError, gzip.BadGzipFile, ET.ParseError) as exc:
+            print(f"sitemap.load_urls: failed to fetch {current}: {exc}", file=sys.stderr)
             continue
 
         if _is_sitemap_index(xml):
