@@ -37,6 +37,7 @@
 		98D03AA2CB9AB4AA64DA7083 /* EmbeddingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BC5016AB7B4C2198DF1370 /* EmbeddingModel.swift */; };
 		A20A30AC3D655EBAFFA4F2F5 /* OpenRouterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482C48CEF21D253BDDE214AF /* OpenRouterClient.swift */; };
 		A3F03F693F29362993CA671D /* StreamingDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF9E9F14826007358E4CE44 /* StreamingDots.swift */; };
+		A64FCBD6EBA5A8F8FC033BD5 /* ScheduleSectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49319DBBC9CA49A9CE88F8F9 /* ScheduleSectionRow.swift */; };
 		A9F84898C112CB19E5D6BBB9 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1987AFF4157A420C4DFFE87 /* Section.swift */; };
 		B6374699DBF7B9536B4AF98E /* ChatTurn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013603EB31BFB789EB030B77 /* ChatTurn.swift */; };
 		BC99D038F3FC8EE423B2FA77 /* Chunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F92A38CF8192BF49157CC /* Chunk.swift */; };
@@ -88,6 +89,7 @@
 		42CA0D9605D75F65ED62E307 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		45EB1AA60591631DA2D516A1 /* AskCPCC.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = AskCPCC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		482C48CEF21D253BDDE214AF /* OpenRouterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRouterClient.swift; sourceTree = "<group>"; };
+		49319DBBC9CA49A9CE88F8F9 /* ScheduleSectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSectionRow.swift; sourceTree = "<group>"; };
 		4B021D2D7ECDA1B2C1452909 /* RAGIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAGIndex.swift; sourceTree = "<group>"; };
 		4FEBB7F93BE4A9067197451D /* tokenizer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenizer.json; sourceTree = "<group>"; };
 		6460FA50C1755159E880DFC5 /* QueryOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOrchestrator.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				767CC52013F9D7DF8C8D1C32 /* InputBar.swift */,
 				41D546E1A795A1499112424E /* MessageBubble.swift */,
 				8BCCE9F0871B2A8B2E4F465F /* ScheduleBadge.swift */,
+				49319DBBC9CA49A9CE88F8F9 /* ScheduleSectionRow.swift */,
 				3B17333B79EA9B99337FDFFC /* SourceChip.swift */,
 				9BF9E9F14826007358E4CE44 /* StreamingDots.swift */,
 			);
@@ -476,6 +479,7 @@
 				DE23B1AA7568757EEBB03C0A /* RAGIndex.swift in Sources */,
 				5231DBA86E0165BBE8A3EC0C /* RootView.swift in Sources */,
 				43FC089CEAB90AE5E90230C0 /* ScheduleBadge.swift in Sources */,
+				A64FCBD6EBA5A8F8FC033BD5 /* ScheduleSectionRow.swift in Sources */,
 				A9F84898C112CB19E5D6BBB9 /* Section.swift in Sources */,
 				0D97B1C28454639697827142 /* SectionResult.swift in Sources */,
 				6603F6B43E7DB3534032143D /* Settings.swift in Sources */,
