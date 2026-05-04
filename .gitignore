@@ -18,4 +18,6 @@ pipeline/**/__pycache__/
 pipeline/raw/
 pipeline/out/
 pipeline/.pytest_cache/
+pipeline/*.egg-info/
+pipeline/**/*.egg-info/
 *.pyc
