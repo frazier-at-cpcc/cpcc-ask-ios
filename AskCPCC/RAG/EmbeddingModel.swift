@@ -15,11 +15,11 @@ final class EmbeddingModel {
     private let maxLen = 256
 
     init() throws {
-        guard let modelURL = Bundle.main.url(forResource: "BGEEmbedder", withExtension: "mlpackage") else {
+        // Xcode compiles .mlpackage → .mlmodelc at build time; only the compiled form is in the bundle.
+        guard let modelURL = Bundle.main.url(forResource: "BGEEmbedder", withExtension: "mlmodelc") else {
             throw EmbeddingError.modelLoadFailed
         }
-        let compiled = try MLModel.compileModel(at: modelURL)
-        self.model = try MLModel(contentsOf: compiled)
+        self.model = try MLModel(contentsOf: modelURL)
 
         guard let vocabURL = Bundle.main.url(forResource: "vocab", withExtension: "txt") else {
             throw EmbeddingError.tokenizerLoadFailed
