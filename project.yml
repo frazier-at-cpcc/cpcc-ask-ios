@@ -5,6 +5,11 @@ options:
   bundleIdPrefix: edu.cpcc
   createIntermediateGroups: true
 
+packages:
+  ZIPFoundation:
+    url: https://github.com/weichsel/ZIPFoundation
+    from: 0.9.19
+
 settings:
   base:
     SWIFT_VERSION: "5.9"
@@ -18,6 +23,8 @@ targets:
     deploymentTarget: "17.0"
     sources:
       - path: AskCPCC
+    dependencies:
+      - package: ZIPFoundation
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: edu.cpcc.AskCPCC

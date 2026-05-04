@@ -30,6 +30,8 @@
 		D1CA402FE1C92140C2EFD2D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 012093CBF0DFB94F1B7C5095 /* Assets.xcassets */; };
 		DE23B1AA7568757EEBB03C0A /* RAGIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B021D2D7ECDA1B2C1452909 /* RAGIndex.swift */; };
 		E0698A17E64669A1583E0A73 /* AskCPCCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E2BBB711773978C206914 /* AskCPCCTests.swift */; };
+		EDF224C232A91B8C95002B67 /* CorpusUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F3902D584C1AF169E2689A /* CorpusUpdater.swift */; };
+		EFEE6A6F49E804C49BD906A6 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = BCBB5F502CD08F87DA2B24DC /* ZIPFoundation */; };
 		FA73CF8645EB1DFACF05655D /* CPCCColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284302164C18304341597AA /* CPCCColors.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,7 @@
 		4B021D2D7ECDA1B2C1452909 /* RAGIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAGIndex.swift; sourceTree = "<group>"; };
 		4FEBB7F93BE4A9067197451D /* tokenizer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenizer.json; sourceTree = "<group>"; };
 		66B989C6DB7B321D955026BE /* SectionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionResult.swift; sourceTree = "<group>"; };
+		97F3902D584C1AF169E2689A /* CorpusUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorpusUpdater.swift; sourceTree = "<group>"; };
 		9A4E2BBB711773978C206914 /* AskCPCCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskCPCCTests.swift; sourceTree = "<group>"; };
 		9E6E5BE07372720653DA9E9B /* VectorStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorStore.swift; sourceTree = "<group>"; };
 		9FDA564395E8C5B5E4FCFFF6 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
@@ -82,6 +85,17 @@
 		F6737FB10FA516CF98C23948 /* AskCPCCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskCPCCApp.swift; sourceTree = "<group>"; };
 		FE73153417307A0AA7D90F5C /* special_tokens_map.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = special_tokens_map.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4C8A5FB9DA24589D5D06A183 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFEE6A6F49E804C49BD906A6 /* ZIPFoundation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		065513828BE3A5F7F80FE4E2 /* Settings */ = {
@@ -194,6 +208,7 @@
 				1ADAED6CB70D96BDB0909CE0 /* .gitkeep */,
 				085F92A38CF8192BF49157CC /* Chunk.swift */,
 				B557FA366D8AD2B089AC7C61 /* CorpusStore.swift */,
+				97F3902D584C1AF169E2689A /* CorpusUpdater.swift */,
 				E2BC5016AB7B4C2198DF1370 /* EmbeddingModel.swift */,
 				4B021D2D7ECDA1B2C1452909 /* RAGIndex.swift */,
 				2F28B9016F06E3446A284741 /* Tokenizer.swift */,
@@ -257,6 +272,7 @@
 				1A03139F945C76C5637E7234 /* SwiftLint */,
 				1F4BD9809B6D938BE7FAD7A4 /* Sources */,
 				1EE28ABC0A26B6EAC6E9AE4B /* Resources */,
+				4C8A5FB9DA24589D5D06A183 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -264,6 +280,7 @@
 			);
 			name = AskCPCC;
 			packageProductDependencies = (
+				BCBB5F502CD08F87DA2B24DC /* ZIPFoundation */,
 			);
 			productName = AskCPCC;
 			productReference = 45EB1AA60591631DA2D516A1 /* AskCPCC.app */;
@@ -313,6 +330,9 @@
 			);
 			mainGroup = E5B2D364B8539FC5C1BF3769;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5C9B9E34ADAC2D396677C672 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8E5B3A17982116B27003DA58 /* Products */;
 			projectDirPath = "";
@@ -374,6 +394,7 @@
 				B6374699DBF7B9536B4AF98E /* ChatTurn.swift in Sources */,
 				BC99D038F3FC8EE423B2FA77 /* Chunk.swift in Sources */,
 				8EA2A06160DB4268579A9FD3 /* CorpusStore.swift in Sources */,
+				EDF224C232A91B8C95002B67 /* CorpusUpdater.swift in Sources */,
 				98D03AA2CB9AB4AA64DA7083 /* EmbeddingModel.swift in Sources */,
 				4965F353236AA17A258D9277 /* KeychainStore.swift in Sources */,
 				DE23B1AA7568757EEBB03C0A /* RAGIndex.swift in Sources */,
@@ -634,6 +655,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5C9B9E34ADAC2D396677C672 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.19;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BCBB5F502CD08F87DA2B24DC /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C9B9E34ADAC2D396677C672 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F2C535507101F134E2178643 /* Project object */;
 }
