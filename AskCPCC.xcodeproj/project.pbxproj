@@ -15,6 +15,7 @@
 		489ABF2542D1F977BEBBF229 /* BGEEmbedder.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 3A99C1568A1BEF535D0F7C04 /* BGEEmbedder.mlpackage */; };
 		4965F353236AA17A258D9277 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDA564395E8C5B5E4FCFFF6 /* KeychainStore.swift */; };
 		5CCC287097267075197F1A2B /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F28B9016F06E3446A284741 /* Tokenizer.swift */; };
+		65E7383C6F6B9C6CF3C4CF60 /* IntentClassifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112FF634D116D794E7A543B1 /* IntentClassifierTests.swift */; };
 		6603F6B43E7DB3534032143D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA0D9605D75F65ED62E307 /* Settings.swift */; };
 		8144A0B64F2D1E6FE51F3520 /* VectorStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3699D653F745C39C74AA3AB0 /* VectorStoreTests.swift */; };
 		837510ACEA26A5E7F2900C6C /* OpenRouterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FB54A6DBCA5E0ED4B4F277 /* OpenRouterModel.swift */; };
@@ -35,6 +36,7 @@
 		D1CA402FE1C92140C2EFD2D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 012093CBF0DFB94F1B7C5095 /* Assets.xcassets */; };
 		DE23B1AA7568757EEBB03C0A /* RAGIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B021D2D7ECDA1B2C1452909 /* RAGIndex.swift */; };
 		E0698A17E64669A1583E0A73 /* AskCPCCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E2BBB711773978C206914 /* AskCPCCTests.swift */; };
+		E4F7CCE719F55B9A64349004 /* IntentClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B73F80C93C1A17F5ED5A4C /* IntentClassifier.swift */; };
 		EDF224C232A91B8C95002B67 /* CorpusUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F3902D584C1AF169E2689A /* CorpusUpdater.swift */; };
 		EFEE6A6F49E804C49BD906A6 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = BCBB5F502CD08F87DA2B24DC /* ZIPFoundation */; };
 		F997C9C50D4D85FFE659D666 /* PromptBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE56FA8D5416F9E5B38C7642 /* PromptBuilder.swift */; };
@@ -57,6 +59,7 @@
 		058B4D0BBAFCE7D88C7FDE24 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		085F92A38CF8192BF49157CC /* Chunk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chunk.swift; sourceTree = "<group>"; };
 		108E606FACEDB0F45222AE59 /* AskCPCCTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AskCPCCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		112FF634D116D794E7A543B1 /* IntentClassifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentClassifierTests.swift; sourceTree = "<group>"; };
 		15DDA2DD272C660F0A40154F /* CourseScheduleClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseScheduleClient.swift; sourceTree = "<group>"; };
 		166E23D943FF01400DB371AE /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		17137D8430B13FB2CFAABF8D /* KeychainStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStoreTests.swift; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 		4B021D2D7ECDA1B2C1452909 /* RAGIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAGIndex.swift; sourceTree = "<group>"; };
 		4FEBB7F93BE4A9067197451D /* tokenizer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenizer.json; sourceTree = "<group>"; };
 		66B989C6DB7B321D955026BE /* SectionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionResult.swift; sourceTree = "<group>"; };
+		83B73F80C93C1A17F5ED5A4C /* IntentClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentClassifier.swift; sourceTree = "<group>"; };
 		8D022C59FAB5985378C8FA21 /* CourseScheduleAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseScheduleAuth.swift; sourceTree = "<group>"; };
 		9754C2AB371A72C70ED649CF /* PromptBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptBuilderTests.swift; sourceTree = "<group>"; };
 		97F3902D584C1AF169E2689A /* CorpusUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorpusUpdater.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				9A4E2BBB711773978C206914 /* AskCPCCTests.swift */,
+				112FF634D116D794E7A543B1 /* IntentClassifierTests.swift */,
 				17137D8430B13FB2CFAABF8D /* KeychainStoreTests.swift */,
 				9754C2AB371A72C70ED649CF /* PromptBuilderTests.swift */,
 				3699D653F745C39C74AA3AB0 /* VectorStoreTests.swift */,
@@ -265,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				B64658A5227EC44C790CC7C4 /* .gitkeep */,
+				83B73F80C93C1A17F5ED5A4C /* IntentClassifier.swift */,
 				EE56FA8D5416F9E5B38C7642 /* PromptBuilder.swift */,
 			);
 			path = Orchestration;
@@ -416,6 +422,7 @@
 				9574A2925F707E1FA923E31D /* CourseScheduleAuth.swift in Sources */,
 				98C1BDD5EBA80CFD85D1E713 /* CourseScheduleClient.swift in Sources */,
 				98D03AA2CB9AB4AA64DA7083 /* EmbeddingModel.swift in Sources */,
+				E4F7CCE719F55B9A64349004 /* IntentClassifier.swift in Sources */,
 				4965F353236AA17A258D9277 /* KeychainStore.swift in Sources */,
 				A20A30AC3D655EBAFFA4F2F5 /* OpenRouterClient.swift in Sources */,
 				837510ACEA26A5E7F2900C6C /* OpenRouterModel.swift in Sources */,
@@ -434,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0698A17E64669A1583E0A73 /* AskCPCCTests.swift in Sources */,
+				65E7383C6F6B9C6CF3C4CF60 /* IntentClassifierTests.swift in Sources */,
 				BE9C78D653C4F9A4371F3164 /* KeychainStoreTests.swift in Sources */,
 				45F87F61B8A7B152FC9D32D9 /* PromptBuilderTests.swift in Sources */,
 				8144A0B64F2D1E6FE51F3520 /* VectorStoreTests.swift in Sources */,
