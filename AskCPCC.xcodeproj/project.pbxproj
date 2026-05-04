@@ -24,6 +24,7 @@
 		5CCC287097267075197F1A2B /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F28B9016F06E3446A284741 /* Tokenizer.swift */; };
 		65E7383C6F6B9C6CF3C4CF60 /* IntentClassifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112FF634D116D794E7A543B1 /* IntentClassifierTests.swift */; };
 		6603F6B43E7DB3534032143D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA0D9605D75F65ED62E307 /* Settings.swift */; };
+		66EA6E7ED7BACD6B6931FA99 /* intro.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DC08D51F66BFBD6402E8BEB /* intro.json */; };
 		67B8E25B35725FB89D0BAF8C /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678601E9A9EF9030389DA922 /* ChatView.swift */; };
 		76329CA225E7FEF386E92542 /* QueryOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6460FA50C1755159E880DFC5 /* QueryOrchestrator.swift */; };
 		80D84CBE0397BBE833758D9D /* ModelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE900170BEDF97700623215 /* ModelPickerView.swift */; };
@@ -84,6 +85,7 @@
 		1ADAED6CB70D96BDB0909CE0 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		1C04A157BBDF1107B9628BE7 /* tokenizer_config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenizer_config.json; sourceTree = "<group>"; };
 		260BC3E057AB0C9F5CF8BA8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2DC08D51F66BFBD6402E8BEB /* intro.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = intro.json; sourceTree = "<group>"; };
 		2F28B9016F06E3446A284741 /* Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
 		3699D653F745C39C74AA3AB0 /* VectorStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorStoreTests.swift; sourceTree = "<group>"; };
 		3A99C1568A1BEF535D0F7C04 /* BGEEmbedder.mlpackage */ = {isa = PBXFileReference; path = BGEEmbedder.mlpackage; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 			children = (
 				DD67403FCA1BDD7628F67868 /* .gitkeep */,
 				3A99C1568A1BEF535D0F7C04 /* BGEEmbedder.mlpackage */,
+				2DC08D51F66BFBD6402E8BEB /* intro.json */,
 				1950FF6F085D76096818458F /* BGETokenizer */,
 			);
 			path = Resources;
@@ -425,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1CA402FE1C92140C2EFD2D5 /* Assets.xcassets in Resources */,
+				66EA6E7ED7BACD6B6931FA99 /* intro.json in Resources */,
 				848EBF513B88DBEF0AFB2276 /* special_tokens_map.json in Resources */,
 				0AB9428CDEEBE9BD4BDC9CF0 /* tokenizer.json in Resources */,
 				26BE0A8B144F0D54CDF6AED8 /* tokenizer_config.json in Resources */,

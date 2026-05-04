@@ -1,0 +1,9 @@
+{
+  "demoQuestions": [
+    {
+      "q": "What's the cost of the Cybersecurity AAS?",
+      "a": "CPCC's Cybersecurity AAS tuition is set by the NC Community College System. In-state students pay roughly the per-credit-hour rate published on cpcc.edu/financial-aid; the AAS requires ~64 credits over 4–6 semesters. Sources: cpcc.edu/financial-aid, catalog.cpcc.edu/programs/cybersecurity.",
+      "sources": ["https://www.cpcc.edu/financial-aid", "https://catalog.cpcc.edu/"]
+    }
+  ]
+}
