@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 from datetime import date
 from pathlib import Path
@@ -34,6 +33,12 @@ def write_jsonl(path: Path, records) -> None:
 def build(sources_path: Path, raw_dir: Path, out_dir: Path,
           version: str | None = None) -> None:
     sources = load_sources(sources_path)
+    for required in ("main", "catalog"):
+        if required not in sources:
+            raise SystemExit(
+                f"sources.yaml missing required key: {required!r} "
+                f"(expected at top level of {sources_path})"
+            )
 
     print("Stage 1: discover URLs from sitemaps")
     main_cfg = sources["main"]
