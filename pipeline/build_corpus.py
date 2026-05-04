@@ -35,31 +35,36 @@ def build(raw_dir: Path, out_dir: Path, version: str | None = None) -> None:
     cpcc_catalog.crawl(raw_dir)
     cpcc_pdfs.crawl(raw_dir)
 
-    print("Stage 2 + 3: extract + chunk")
+    print("Stage 2 + 3: extract + chunk + dedup")
     chunks: list[dict] = []
+    seen_texts: set[str] = set()
     counts = {"cpcc.edu": 0, "catalog.cpcc.edu": 0, "pdfs": 0}
+
+    def add_chunk(piece: str, url: str, title: str) -> None:
+        if piece in seen_texts:
+            return
+        seen_texts.add(piece)
+        chunks.append({"source_url": url, "title": title, "text": piece,
+                       "char_offset": 0, "page_section": ""})
 
     for rec in load_jsonl(raw_dir / "cpcc_main.jsonl"):
         text = extract_text_from_html(rec["html"])
         for piece in chunk_text(text):
-            chunks.append({"source_url": rec["url"], "title": rec.get("title", ""), "text": piece,
-                           "char_offset": 0, "page_section": ""})
+            add_chunk(piece, rec["url"], rec.get("title", ""))
         counts["cpcc.edu"] += 1
 
     for rec in load_jsonl(raw_dir / "cpcc_catalog.jsonl"):
         text = extract_text_from_html(rec["html"])
         for piece in chunk_text(text):
-            chunks.append({"source_url": rec["url"], "title": rec.get("title", ""), "text": piece,
-                           "char_offset": 0, "page_section": ""})
+            add_chunk(piece, rec["url"], rec.get("title", ""))
         counts["catalog.cpcc.edu"] += 1
 
     for rec in load_jsonl(raw_dir / "cpcc_pdfs.jsonl"):
         for piece in chunk_text(rec["text"]):
-            chunks.append({"source_url": rec["url"], "title": rec.get("title", ""), "text": piece,
-                           "char_offset": 0, "page_section": ""})
+            add_chunk(piece, rec["url"], rec.get("title", ""))
         counts["pdfs"] += 1
 
-    print(f"  total chunks: {len(chunks)}")
+    print(f"  total chunks: {len(chunks)} (deduped)")
 
     print("Stage 4: embed")
     model = load_model()

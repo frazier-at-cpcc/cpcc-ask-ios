@@ -2,11 +2,17 @@
 from __future__ import annotations
 
 
-def chunk_text(text: str, max_chars: int = 600, overlap: int = 100) -> list[str]:
+def chunk_text(text: str, max_chars: int = 600, overlap: int = 100,
+               min_chunk_chars: int = 200) -> list[str]:
     """Split text into overlapping chunks of at most max_chars characters.
 
-    Prefers paragraph boundaries (\\n\\n) when within a max_chars window.
-    Returns [] for empty or whitespace-only input.
+    Prefers paragraph boundaries (\\n\\n) but only accepts a boundary
+    when the resulting chunk would be at least min_chunk_chars long.
+    Otherwise hard-cuts at max_chars.
+
+    Skips chunks shorter than min_chunk_chars in the output to avoid
+    flooding the index with low-value microchunks. Returns [] for empty
+    or whitespace-only input.
     """
     text = text.strip()
     if not text:
@@ -20,15 +26,19 @@ def chunk_text(text: str, max_chars: int = 600, overlap: int = 100) -> list[str]
     while start < len(text):
         end = min(start + max_chars, len(text))
         if end < len(text):
-            # Prefer ending on a paragraph boundary anywhere within the
-            # current window (after start). This keeps semantically-related
-            # paragraphs intact when possible.
+            # Look for a paragraph break anywhere in the current window,
+            # but only accept it if the resulting chunk would be >= min_chunk_chars.
+            # This keeps semantically-related paragraphs together while preventing
+            # the chunker from creating microchunks on every \n\n.
+            min_acceptable_end = start + min_chunk_chars
             segment = text[start:end]
             para_idx = segment.rfind("\n\n")
             if para_idx > 0:
-                end = start + para_idx
+                candidate_end = start + para_idx
+                if candidate_end >= min_acceptable_end:
+                    end = candidate_end
         chunk = text[start:end].strip()
-        if chunk:
+        if chunk and len(chunk) >= min_chunk_chars:
             chunks.append(chunk)
         if end == len(text):
             break
