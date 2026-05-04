@@ -3,10 +3,10 @@ import SwiftUI
 struct InputBar: View {
     @Environment(Settings.self) private var settings
     @Environment(ChatViewModel.self) private var chat
+    @Environment(\.ragIndex) private var rag
+    @Environment(\.courseScheduleClient) private var schedule
+    @Environment(\.openRouterClient) private var llm
 
-    @State private var rag: RAGIndex = RAGIndex()
-    @State private var schedule = CourseScheduleClient()
-    @State private var llm = OpenRouterClient()
     @State private var orchestrator: QueryOrchestrator?
 
     var body: some View {

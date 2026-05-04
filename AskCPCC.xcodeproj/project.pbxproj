@@ -32,12 +32,14 @@
 		837510ACEA26A5E7F2900C6C /* OpenRouterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FB54A6DBCA5E0ED4B4F277 /* OpenRouterModel.swift */; };
 		848EBF513B88DBEF0AFB2276 /* special_tokens_map.json in Resources */ = {isa = PBXBuildFile; fileRef = FE73153417307A0AA7D90F5C /* special_tokens_map.json */; };
 		8742D79F879D840538AABC61 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C1696C5A1AC05541A4BAE9 /* ChatViewModel.swift */; };
+		8B1F01BB50635A37BAA8A3F8 /* CorpusStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE4031030C10099E3406BB5 /* CorpusStatus.swift */; };
 		8EA2A06160DB4268579A9FD3 /* CorpusStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557FA366D8AD2B089AC7C61 /* CorpusStore.swift */; };
 		9574A2925F707E1FA923E31D /* CourseScheduleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D022C59FAB5985378C8FA21 /* CourseScheduleAuth.swift */; };
 		97560B0267FE7320015F10B2 /* VectorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6E5BE07372720653DA9E9B /* VectorStore.swift */; };
 		97E234657C747B26D0544D53 /* InputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767CC52013F9D7DF8C8D1C32 /* InputBar.swift */; };
 		98C1BDD5EBA80CFD85D1E713 /* CourseScheduleClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDA2DD272C660F0A40154F /* CourseScheduleClient.swift */; };
 		98D03AA2CB9AB4AA64DA7083 /* EmbeddingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BC5016AB7B4C2198DF1370 /* EmbeddingModel.swift */; };
+		99CD1C3F0BD3E60030DBF109 /* EnvironmentActors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0971807FD48181A4705DF650 /* EnvironmentActors.swift */; };
 		A20A30AC3D655EBAFFA4F2F5 /* OpenRouterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482C48CEF21D253BDDE214AF /* OpenRouterClient.swift */; };
 		A3F03F693F29362993CA671D /* StreamingDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF9E9F14826007358E4CE44 /* StreamingDots.swift */; };
 		A64FCBD6EBA5A8F8FC033BD5 /* ScheduleSectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49319DBBC9CA49A9CE88F8F9 /* ScheduleSectionRow.swift */; };
@@ -77,6 +79,7 @@
 		02C1696C5A1AC05541A4BAE9 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		058B4D0BBAFCE7D88C7FDE24 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		085F92A38CF8192BF49157CC /* Chunk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chunk.swift; sourceTree = "<group>"; };
+		0971807FD48181A4705DF650 /* EnvironmentActors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentActors.swift; sourceTree = "<group>"; };
 		108E606FACEDB0F45222AE59 /* AskCPCCTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AskCPCCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		112FF634D116D794E7A543B1 /* IntentClassifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentClassifierTests.swift; sourceTree = "<group>"; };
 		15DDA2DD272C660F0A40154F /* CourseScheduleClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseScheduleClient.swift; sourceTree = "<group>"; };
@@ -89,6 +92,7 @@
 		2F28B9016F06E3446A284741 /* Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
 		3699D653F745C39C74AA3AB0 /* VectorStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorStoreTests.swift; sourceTree = "<group>"; };
 		3A99C1568A1BEF535D0F7C04 /* BGEEmbedder.mlpackage */ = {isa = PBXFileReference; path = BGEEmbedder.mlpackage; sourceTree = "<group>"; };
+		3AE4031030C10099E3406BB5 /* CorpusStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorpusStatus.swift; sourceTree = "<group>"; };
 		3B17333B79EA9B99337FDFFC /* SourceChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceChip.swift; sourceTree = "<group>"; };
 		41D546E1A795A1499112424E /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
 		42CA0D9605D75F65ED62E307 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -244,6 +248,8 @@
 				058B4D0BBAFCE7D88C7FDE24 /* .gitkeep */,
 				013603EB31BFB789EB030B77 /* ChatTurn.swift */,
 				02C1696C5A1AC05541A4BAE9 /* ChatViewModel.swift */,
+				3AE4031030C10099E3406BB5 /* CorpusStatus.swift */,
+				0971807FD48181A4705DF650 /* EnvironmentActors.swift */,
 				9FDA564395E8C5B5E4FCFFF6 /* KeychainStore.swift */,
 				42CA0D9605D75F65ED62E307 /* Settings.swift */,
 			);
@@ -476,11 +482,13 @@
 				67B8E25B35725FB89D0BAF8C /* ChatView.swift in Sources */,
 				8742D79F879D840538AABC61 /* ChatViewModel.swift in Sources */,
 				BC99D038F3FC8EE423B2FA77 /* Chunk.swift in Sources */,
+				8B1F01BB50635A37BAA8A3F8 /* CorpusStatus.swift in Sources */,
 				8EA2A06160DB4268579A9FD3 /* CorpusStore.swift in Sources */,
 				EDF224C232A91B8C95002B67 /* CorpusUpdater.swift in Sources */,
 				9574A2925F707E1FA923E31D /* CourseScheduleAuth.swift in Sources */,
 				98C1BDD5EBA80CFD85D1E713 /* CourseScheduleClient.swift in Sources */,
 				98D03AA2CB9AB4AA64DA7083 /* EmbeddingModel.swift in Sources */,
+				99CD1C3F0BD3E60030DBF109 /* EnvironmentActors.swift in Sources */,
 				525855386CD46D3A9FFE2116 /* ErrorBanner.swift in Sources */,
 				97E234657C747B26D0544D53 /* InputBar.swift in Sources */,
 				E4F7CCE719F55B9A64349004 /* IntentClassifier.swift in Sources */,

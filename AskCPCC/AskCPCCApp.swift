@@ -5,6 +5,7 @@ struct AskCPCCApp: App {
 
     @State private var settings = Settings()
     @State private var chat = ChatViewModel()
+    @State private var corpusStatus = CorpusStatus()
     @State private var rag = RAGIndex()
     @State private var schedule = CourseScheduleClient()
     @State private var llm = OpenRouterClient()
@@ -15,28 +16,19 @@ struct AskCPCCApp: App {
             RootView()
                 .environment(settings)
                 .environment(chat)
+                .environment(corpusStatus)
+                .environment(\.ragIndex, rag)
+                .environment(\.courseScheduleClient, schedule)
+                .environment(\.openRouterClient, llm)
+                .environment(\.corpusUpdater, corpusUpdater)
                 .task {
-                    await loadCorpus()
+                    await corpusStatus.refresh(
+                        rag: rag,
+                        updater: corpusUpdater,
+                        directory: corpusDirectory(),
+                        force: false)
                 }
                 .preferredColorScheme(.light)
-        }
-    }
-
-    private func loadCorpus() async {
-        let dir = corpusDirectory()
-        await rag.load(from: dir)
-
-        let now = Date()
-        if let last = settings.lastCorpusCheck, now.timeIntervalSince(last) < 24 * 3600 {
-            return
-        }
-        settings.lastCorpusCheck = now
-        let local = await rag.currentManifest()
-        do {
-            let updated = try await corpusUpdater.updateIfNewer(localManifest: local, installInto: dir)
-            if updated { await rag.load(from: dir) }
-        } catch {
-            // silent — keep existing corpus
         }
     }
 
