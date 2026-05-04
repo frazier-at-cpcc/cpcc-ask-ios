@@ -1,0 +1,21 @@
+included:
+  - AskCPCC
+  - AskCPCCTests
+excluded:
+  - build
+  - DerivedData
+disabled_rules:
+  - line_length
+  - identifier_name
+  - todo
+opt_in_rules:
+  - empty_count
+  - first_where
+  - sorted_imports
+  - explicit_init
+line_length:
+  warning: 160
+  error: 200
+type_name:
+  min_length: 3
+  max_length: 60

@@ -1,0 +1,21 @@
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.swiftpm/
+*.xcworkspace/xcuserdata/
+.DS_Store
+.build/
+Package.resolved
+.idea/
+.vscode/
+*.swp
+
+# Python pipeline
+pipeline/.venv/
+pipeline/__pycache__/
+pipeline/**/__pycache__/
+pipeline/raw/
+pipeline/out/
+pipeline/.pytest_cache/
+*.pyc
